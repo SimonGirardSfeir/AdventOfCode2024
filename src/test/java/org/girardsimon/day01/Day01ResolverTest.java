@@ -11,18 +11,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Day01ResolverTest {
 
-    private static List<String> lines;
+    private static HistorianLocations historianLocations;
 
     @BeforeAll
     static void setUp() throws IOException {
-        lines = LineExtractor.getLines("src/test/resources/day01/inputData.txt");
+        List<String> lines = LineExtractor.getLines("src/test/resources/day01/inputData.txt");
+        historianLocations = LocationsParser.parseHistorianLocations(lines);
     }
 
     @Test
     void resolve_part1_of_day01_problem() {
-        // Arrange
-        HistorianLocations historianLocations = LocationsParser.parseHistorianLocations(lines);
-
         // Act
         int distance = historianLocations.computeDistance();
 
@@ -32,10 +30,7 @@ public class Day01ResolverTest {
 
     @Test
     void resolve_part2_of_day01_problem() {
-        // Arrange
-        HistorianLocations historianLocations = LocationsParser.parseHistorianLocations(lines);
-
-        // Act
+         // Act
         long similarityScore = historianLocations.computeSimilarityScore();
 
         // Assert
