@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Day02ResolverTest {
+class Day02ResolverTest {
 
     private static PlantReportManager plantReportManager;
 
@@ -20,7 +20,7 @@ public class Day02ResolverTest {
     }
 
     @Test
-    void resolve_part1_of_day01_problem() {
+    void resolve_part1_of_day02_problem() {
         // Act
         long numberOfSafeReports = plantReportManager.countNumberOfSafeReports();
 
@@ -29,7 +29,7 @@ public class Day02ResolverTest {
     }
 
     @Test
-    void resolve_part2_of_day01_problem() {
+    void resolve_part2_of_day02_problem() {
         // Act
         long numberOfSafeReports = plantReportManager.countNumberOfSafeReportsWithTolerance();
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Day01ResolverTest {
+class Day01ResolverTest {
 
     private static HistorianLocations historianLocations;
 
