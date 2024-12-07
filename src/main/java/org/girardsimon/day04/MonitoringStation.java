@@ -1,6 +1,6 @@
 package org.girardsimon.day04;
 
-import org.girardsimon.common.Direction;
+import org.girardsimon.common.Direction8;
 import org.girardsimon.common.Position;
 
 import java.util.Arrays;
@@ -19,12 +19,12 @@ public record MonitoringStation(Map<Position, StationLetter> stationLetters, int
     }
 
     private long numberOfXmasStartingAtPosition(Position position) {
-        return Arrays.stream(Direction.values())
+        return Arrays.stream(Direction8.values())
                 .filter(direction -> hasPatternForDirection(direction, position))
                 .count();
     }
 
-    private boolean hasPatternForDirection(Direction direction, Position position) {
+    private boolean hasPatternForDirection(Direction8 direction, Position position) {
         return stationLetters.get(position.fromDelta(direction.dx(), direction.dy())) == StationLetter.M
         && stationLetters.get(position.fromDelta(2 * direction.dx(), 2 * direction.dy())) == StationLetter.A
         && stationLetters.get(position.fromDelta(3 * direction.dx(), 3 * direction.dy())) == StationLetter.S;
