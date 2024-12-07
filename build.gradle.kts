@@ -22,4 +22,24 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+
+    testLogging {
+        events("PASSED","FAILED","SKIPPED")
+
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        showExceptions = true
+        showStackTraces = true
+        showCauses = true
+    }
+
+    addTestListener(object : TestListener {
+        override fun beforeSuite(suite: TestDescriptor) {}
+        override fun afterSuite(suite: TestDescriptor, result: TestResult) {}
+        override fun beforeTest(testDescriptor: TestDescriptor) {}
+
+        override fun afterTest(testDescriptor: TestDescriptor, result: TestResult) {
+            val durationMillis = result.endTime - result.startTime
+            println("Test ${testDescriptor.className}.${testDescriptor.name} ${result.resultType} in ${durationMillis} ms")
+        }
+    })
 }
