@@ -28,7 +28,7 @@ public final class SituationMapParser {
         IntStream.range(0, maxHeight).forEach(row -> IntStream.range(0, maxWidth).forEach(col -> {
             char currentChar = lines.get(row).charAt(col);
             if(currentChar == OBSTACLE_CHAR) {
-                obstacles.add(new Position(col, maxWidth - row - 1));
+                obstacles.add(new Position(col, maxHeight - row - 1));
             } else if(currentChar == EAST_CHAR || currentChar == NORTH_CHAR || currentChar == SOUTH_CHAR || currentChar == WEST_CHAR){
                 guards.add(setGuardSituation(maxWidth - row -1, col, currentChar));
             }

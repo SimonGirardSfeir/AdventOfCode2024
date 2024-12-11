@@ -20,7 +20,7 @@ class Day07ResolverTest {
     }
 
     @Test
-    void resolve_part1_of_day06_problem() {
+    void resolve_part1_of_day07_problem() {
         // Act
         long totalCalibration  = bridge.computeTotalCalibration(List.of(ArithmeticOperation.ADD, ArithmeticOperation.MULTIPLY));
 
@@ -29,7 +29,7 @@ class Day07ResolverTest {
     }
 
     @Test
-    void resolve_part2_of_day06_problem() {
+    void resolve_part2_of_day07_problem() {
         // Act
         long totalCalibration  = bridge.computeTotalCalibration(List.of(ArithmeticOperation.values()));
 

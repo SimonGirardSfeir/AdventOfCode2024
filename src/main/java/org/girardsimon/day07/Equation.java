@@ -13,7 +13,7 @@ public record Equation(long targetValue, List<Long> operands) {
             int currentIndex,
             List<ArithmeticOperation> availableOperations) {
         if(currentIndex < 0) {
-            return targetValue == 0L;
+            return targetValue == 0L; // target achieved
         }
         return availableOperations.stream()
                 .anyMatch(arithmeticOperation -> {
