@@ -39,7 +39,7 @@ tasks.test {
 
         override fun afterTest(testDescriptor: TestDescriptor, result: TestResult) {
             val durationMillis = result.endTime - result.startTime
-            println("Test ${testDescriptor.className}.${testDescriptor.name} ${result.resultType} in ${durationMillis} ms")
+            println("Test ${testDescriptor.className}.${testDescriptor.name} ${result.resultType} in $durationMillis ms")
         }
     })
 }

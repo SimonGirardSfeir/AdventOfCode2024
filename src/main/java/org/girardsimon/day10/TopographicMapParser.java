@@ -14,7 +14,7 @@ public final class TopographicMapParser {
     public static TopographicMap parseTopographicMap(List<String> lines) {
         int maxHeight = lines.size();
         int maxWidth = lines.getFirst().length();
-        Set<TopographicMapPosition> antennas = IntStream.range(0, maxWidth)
+        Set<TopographicMapPosition> mapPositions = IntStream.range(0, maxWidth)
                 .boxed()
                 .flatMap(col ->
                         IntStream.range(0, maxHeight)
@@ -23,7 +23,7 @@ public final class TopographicMapParser {
                                         new Position(col, maxHeight - row - 1)))
                 )
                 .collect(Collectors.toSet());
-        return new TopographicMap(antennas);
+        return new TopographicMap(mapPositions);
     }
 
     private static int getHeight(List<String> lines, Integer col, int row) {
