@@ -9,6 +9,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static org.girardsimon.common.CoordinateSystem.STANDARD;
+
 public record MonitoringStation(Map<Position, StationLetter> stationLetters, int maxHeight, int maxWidth) {
 
     public long countXmasOccurrences() {
@@ -25,9 +27,9 @@ public record MonitoringStation(Map<Position, StationLetter> stationLetters, int
     }
 
     private boolean hasPatternForDirection(Direction8 direction, Position position) {
-        return stationLetters.get(position.fromDelta(direction.dx(), direction.dy())) == StationLetter.M
-        && stationLetters.get(position.fromDelta(2 * direction.dx(), 2 * direction.dy())) == StationLetter.A
-        && stationLetters.get(position.fromDelta(3 * direction.dx(), 3 * direction.dy())) == StationLetter.S;
+        return stationLetters.get(position.fromDelta(direction.dx(STANDARD), direction.dy(STANDARD))) == StationLetter.M
+        && stationLetters.get(position.fromDelta(2 * direction.dx(STANDARD), 2 * direction.dy(STANDARD))) == StationLetter.A
+        && stationLetters.get(position.fromDelta(3 * direction.dx(STANDARD), 3 * direction.dy(STANDARD))) == StationLetter.S;
     }
 
     public long countXshapeMasOccurrences() {

@@ -1,6 +1,7 @@
 package org.girardsimon.day13;
 
 import org.girardsimon.common.Position;
+import org.girardsimon.common.Vector;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

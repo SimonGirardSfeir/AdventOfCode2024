@@ -13,10 +13,10 @@ public enum Direction8 {
         this.dy = dy;
     }
 
-    public int dx() {
-        return dx;
+    public int dx(CoordinateSystem coordinateSystem) {
+        return coordinateSystem.adjustDx(dx);
     }
-    public int dy() {
-        return dy;
+    public int dy(CoordinateSystem coordinateSystem) {
+        return coordinateSystem.adjustDy(dy);
     }
 }
