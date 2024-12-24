@@ -10,6 +10,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static org.girardsimon.common.CoordinateSystem.STANDARD;
+
 public record Garden(Set<Plant> plants) {
 
     List<PlantRegion> buildPlantRegions() {
@@ -42,7 +44,8 @@ public record Garden(Set<Plant> plants) {
         while (!stack.isEmpty()) {
             Plant currentPlant = stack.pop();
             Arrays.stream(Direction4.values())
-                    .map(direction -> new Plant(currentPlant.plantType(), currentPlant.position().fromDelta(direction.dx(), direction.dy())))
+                    .map(direction -> new Plant(currentPlant.plantType(),
+                            currentPlant.position().fromDelta(direction.dx(STANDARD), direction.dy(STANDARD))))
                     .filter(neighbor -> !visitedPlants.contains(neighbor) && plants.contains(neighbor))
                     .forEach(neighbor -> {
                         visitedPlants.add(neighbor);

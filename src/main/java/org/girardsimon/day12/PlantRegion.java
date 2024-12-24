@@ -11,6 +11,8 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static org.girardsimon.common.CoordinateSystem.STANDARD;
+
 public record PlantRegion(Set<Plant> plants) {
     long area() {
         return plants.size();
@@ -25,7 +27,9 @@ public record PlantRegion(Set<Plant> plants) {
 
     private long countBorders(Position position, Set<Position> plantPositions) {
         return Arrays.stream(Direction4.values())
-                .filter(direction -> !plantPositions.contains(position.fromDelta(direction.dx(), direction.dy())))
+                .filter(direction -> !plantPositions.contains(
+                        position.fromDelta(direction.dx(STANDARD), direction.dy(STANDARD)))
+                )
                 .toList()
                 .size();
     }
@@ -40,7 +44,12 @@ public record PlantRegion(Set<Plant> plants) {
 
         plantPositions.forEach(position ->
                 Arrays.stream(Direction4.values())
-                    .filter(direction -> !plantPositions.contains(position.fromDelta(direction.dx(), direction.dy())))
+                    .filter(direction ->
+                            !plantPositions.contains(position.fromDelta(
+                                    direction.dx(STANDARD),
+                                    direction.dy(STANDARD))
+                            )
+                    )
                     .forEach(direction -> mergeNeighboringSegmentInDirection(position, direction, sidesPerDirection))
         );
 

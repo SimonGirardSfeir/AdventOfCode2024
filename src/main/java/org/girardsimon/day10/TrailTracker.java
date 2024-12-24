@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import static org.girardsimon.common.CoordinateSystem.STANDARD;
+
 public class TrailTracker {
 
     TrailTrackerResult initTracking(TopographicMapPosition startingPosition, Set<TopographicMapPosition> topographicMapPositions) {
@@ -25,7 +27,7 @@ public class TrailTracker {
         }
         return Arrays.stream(Direction4.values())
                 .mapToLong(direction -> {
-                    Position nextPosition = startingPosition.position().fromDelta(direction.dx(), direction.dy());
+                    Position nextPosition = startingPosition.position().fromDelta(direction.dx(STANDARD), direction.dy(STANDARD));
                     if (topographicMapPositions.contains(new TopographicMapPosition(startingPosition.height() + 1, nextPosition))) {
                         return trackMap(new TopographicMapPosition(startingPosition.height() + 1, nextPosition), topographicMapPositions, visitedTopPositions);
                     } else {
